@@ -44,7 +44,7 @@ Run:
 ```bash
 echo "HOME=$HOME"
 pwd
-NEW_ENCODED=$(python3 -c "import sys; print(sys.argv[1].lstrip('/').replace('/', '-'))" "$(pwd)")
+NEW_ENCODED=$(python3 -c "import sys; p=sys.argv[1]; print('-'+p.lstrip('/').replace('/', '-') if p.startswith('/') else p.replace('/', '-'))" "$(pwd)")
 echo "NEW_ENCODED=$NEW_ENCODED"
 ```
 
