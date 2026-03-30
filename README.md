@@ -15,7 +15,7 @@ A Claude Code plugin that exports your project's Claude workspace to a portable 
 ## Install
 
 ```bash
-claude plugin install https://github.com/ELIXIR-NO/claude-workspace-sync
+claude plugin install https://github.com/yasinmiran/claude-workspace-sync
 ```
 
 ## Usage
@@ -62,8 +62,8 @@ Paths are stored in two scopes:
 - **`home`** — relative to `$HOME` with the encoded project path segment auto-replaced
 
 The encoded path is derived by replacing `/` with `-` in the absolute path:
-- Source: `/Users/yasin/dev/FEGA-Norway` → `-Users-yasin-dev-FEGA-Norway`
-- Destination: `/Users/yamir5575/work/FEGA-Norway` → `-Users-yamir5575-work-FEGA-Norway`
+- Source: `/Users/alice/dev/my-project` → `-Users-alice-dev-my-project`
+- Destination: `/Users/bob/work/my-project` → `-Users-bob-work-my-project`
 
 Any occurrence of the old absolute paths inside file **contents** is also patched on import.
 
@@ -74,20 +74,20 @@ Any occurrence of the old absolute paths inside file **contents** is also patche
   "version": "1.0",
   "exported_at": "2026-03-30T11:41:00Z",
   "source": {
-    "home": "/Users/yasin",
-    "project_root": "/Users/yasin/dev/FEGA-Norway",
-    "encoded_project_path": "-Users-yasin-dev-FEGA-Norway"
+    "home": "/Users/alice",
+    "project_root": "/Users/alice/dev/my-project",
+    "encoded_project_path": "-Users-alice-dev-my-project"
   },
   "files": [
     { "scope": "project", "path": ".claude/agents/service-builder.md", "content": "..." },
-    { "scope": "home", "path": ".claude/projects/-Users-yasin-dev-FEGA-Norway/memory/MEMORY.md", "content": "..." }
+    { "scope": "home", "path": ".claude/projects/-Users-alice-dev-my-project/memory/MEMORY.md", "content": "..." }
   ],
-  "git_exclude_entries": [".claude/", "CLAUDE.md", "sensitive-data-archive/"],
+  "git_exclude_entries": [".claude/", "CLAUDE.md"],
   "handoff": {
-    "summary": "Working on FEGA-Norway TLS investigation...",
-    "in_progress": ["Upstream SDA PR for ROOT_CERT_PATH split"],
+    "summary": "Working on TLS investigation...",
+    "in_progress": ["Upstream PR for ROOT_CERT_PATH split"],
     "decisions_made": ["BROKER_VALIDATE=false is a bug, not intentional"],
-    "watch_out_for": ["sensitive-data-archive/ needs to be re-cloned manually"]
+    "watch_out_for": ["Large reference repos need to be re-cloned manually"]
   }
 }
 ```
@@ -95,7 +95,7 @@ Any occurrence of the old absolute paths inside file **contents** is also patche
 ## Notes
 
 - The bundle JSON may contain file contents that were gitignored for a reason — do not commit it to a public repo.
-- Reference repos (e.g. `sensitive-data-archive/`) are not bundled — re-clone them manually on the new machine.
+- Large reference repos are not bundled — re-clone them manually on the new machine.
 - Conversation history lives server-side. Use `claude --resume <uuid>` on the new machine to continue the same session alongside the restored workspace.
 
 ## License
