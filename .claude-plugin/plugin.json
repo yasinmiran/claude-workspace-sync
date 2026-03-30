@@ -1,0 +1,9 @@
+{
+  "name": "claude-workspace-sync",
+  "description": "Export and import Claude Code workspace state (agents, skills, tools, CLAUDE.md, memory) as a portable JSON bundle. Enables moving a workspace between machines with automatic path reconstruction and session handoff notes.",
+  "author": {
+    "name": "ELIXIR-NO",
+    "url": "https://github.com/ELIXIR-NO/claude-workspace-sync"
+  },
+  "version": "0.1.0"
+}
