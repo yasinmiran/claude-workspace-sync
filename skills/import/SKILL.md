@@ -72,20 +72,9 @@ Process every entry in `bundle.files`:
 - Create any missing parent directories using Bash: `mkdir -p <parent-dir>`
 - Write the file using the Write tool
 
-## Step 5: Apply git exclude entries
-
-Read `.git/info/exclude` (create it if absent with `mkdir -p .git/info && touch .git/info/exclude`).
-
-For each entry in `bundle.git_exclude_entries`:
-- Check if the exact line already exists in the file
-- If not present, append it
-
-Do not duplicate entries that are already there.
-
-## Step 6: Confirm to user
+## Step 5: Confirm to user
 
 Report:
 - Every file written with its final absolute path
 - Number of content patches applied (files where path strings were replaced)
-- Git exclude entries added vs skipped (already present)
 - Reminder: any reference repos mentioned in memory files (e.g. `sensitive-data-archive/`) will need to be re-cloned manually

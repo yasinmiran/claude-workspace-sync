@@ -9,7 +9,6 @@ A Claude Code plugin that exports your project's Claude workspace to a portable 
 | `.claude/` | project | Agents, skills, shell tools |
 | `CLAUDE.md` | project | Project context for Claude |
 | `~/.claude/projects/<path>/memory/` | home | Persistent memory files |
-| `.git/info/exclude` entries | project | Local gitignore rules |
 | Handoff summary | generated | What was worked on, open threads, decisions |
 
 ## Install
@@ -50,7 +49,6 @@ Claude will:
 1. Show the handoff summary immediately
 2. Reconstruct all workspace files at the correct paths
 3. Patch any hardcoded absolute paths in file contents
-4. Re-apply git exclude entries
 
 Memory files are written to `~/.claude/projects/<new-encoded-path>/memory/` and auto-loaded by every future session in this project — no flags needed.
 
@@ -82,7 +80,6 @@ Any occurrence of the old absolute paths inside file **contents** is also patche
     { "scope": "project", "path": ".claude/agents/service-builder.md", "content": "..." },
     { "scope": "home", "path": ".claude/projects/-Users-alice-dev-my-project/memory/MEMORY.md", "content": "..." }
   ],
-  "git_exclude_entries": [".claude/", "CLAUDE.md"],
   "handoff": {
     "summary": "Working on TLS investigation...",
     "in_progress": ["Upstream PR for ROOT_CERT_PATH split"],

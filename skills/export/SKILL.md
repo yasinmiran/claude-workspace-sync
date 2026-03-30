@@ -45,13 +45,7 @@ For each file, record the path **relative to `$HOME`** (strip the `$HOME/` prefi
 
 If no memory directory exists yet, skip this step silently.
 
-## Step 4: Collect git exclude entries
-
-Read `.git/info/exclude`. Extract all non-empty, non-comment lines that appear after the last default boilerplate comment line (`# *~`). Store as an array of strings.
-
-If the file does not exist or has no such lines, use an empty array `[]`.
-
-## Step 5: Generate handoff summary
+## Step 4: Generate handoff summary
 
 Based on the current conversation, write a concise handoff note:
 - **summary**: 2–3 sentences describing what was worked on in this session
@@ -59,7 +53,7 @@ Based on the current conversation, write a concise handoff note:
 - **decisions_made**: key technical or architectural decisions made
 - **watch_out_for**: gotchas, blockers, or context that would be non-obvious in a fresh session
 
-## Step 6: Assemble and write JSON
+## Step 5: Assemble and write JSON
 
 Get the current timestamp:
 ```bash
@@ -77,7 +71,6 @@ Construct the bundle:
     "encoded_project_path": "<ENCODED value>"
   },
   "files": [ <all collected file objects from Steps 2 and 3> ],
-  "git_exclude_entries": [ <lines from Step 4> ],
   "handoff": {
     "summary": "<paragraph>",
     "in_progress": ["<item>"],
@@ -91,7 +84,7 @@ Output filename: use the argument if provided. Otherwise: `workspace-export-<YYY
 
 Write the JSON file to the project root.
 
-## Step 7: Confirm to user
+## Step 6: Confirm to user
 
 Report:
 - Full path of the written file
